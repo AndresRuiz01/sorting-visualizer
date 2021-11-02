@@ -1,0 +1,15 @@
+.sorting-grid {
+  display: flex;
+  height: 600px;
+  justify-content: center;
+  align-items:flex-end;
+  margin: 10px;
+}
+  
+.sorting-visualizer {
+  text-align: center;  
+}
+
+.below-header-space {
+  height: 100px;
+}

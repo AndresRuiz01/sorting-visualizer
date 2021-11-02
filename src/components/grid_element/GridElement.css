@@ -1,0 +1,7 @@
+.grid-element {
+    width: 8px;
+    /* background-color: #282c34; */
+    padding: 0px 2px;
+    margin: 0px 1px;
+    border: 1px white solid;
+}
