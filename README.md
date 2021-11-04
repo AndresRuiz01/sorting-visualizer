@@ -35,6 +35,6 @@ To Visit App:
 
 ## Reflection
 
-I began this project in order to get a better understanding of how React works in order to prepare for our Senior Desing Project development. The goal was to build a simple sorting visualizer using various sorting algorithms. 
+I began this project to get a better understanding of how React works to prepare for our Senior Desing Project development. The goal was to build a simple sorting visualizer using various sorting algorithms.
 
-The main obstacle I ran into was how to visualize the sorting algorithm process. I settled on generating a list of animations then iterating over those animations instead of animating the sorting process real time during the algorithm. This allows me to seperate the sorting algorithm logic from the visualization logic. The brings up the issue with passing around animations throughout various recursive calls in the sorting algorithms. While I had a good understanding of how all of the sorting algorithms worked, this project required me to dive deeper and truely undertand how all of the sorting algorithms worked. 
+The main obstacle I ran into was how to visualize the sorting algorithm process. I settled on generating a list of animations then iterating over those animations instead of animating the sorting process in real-time during the algorithm. This allows me to separate the sorting algorithm logic from the visualization logic. The brings up the issue with passing around animations throughout various recursive calls in the sorting algorithms. While I had a good understanding of how all of the sorting algorithms worked, this project required me to dive deeper and truly understand how all of the sorting algorithms worked.
