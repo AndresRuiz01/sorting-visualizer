@@ -198,8 +198,6 @@ class SortingVisualizer extends React.Component {
                     gridElements[barOneIdx].style.backgroundColor = "red";
                 } else if (animation_type === "pivot-deselect") {
                     gridElements[barOneIdx].style.backgroundColor = "#282c34";
-                } else if (animation_type === "correct") {
-                    gridElements[barOneIdx].style.backgroundColor = "#282c34";
                 }
                 this.setState({array: temp_array});
                 var progress = Math.floor(((i) / animations.length) * 100) + 1;
@@ -234,6 +232,10 @@ class SortingVisualizer extends React.Component {
                 } else if (animation_type === "uncheck-check") {
                     gridElements[barOneIdx].style.border = "white 1px solid";
                     gridElements[barTwoIdx].style.border = "black 1px solid";
+                } else if (animation_type === "pivot-deselect") {
+                    gridElements[barOneIdx].style.border = "white 1px solid";
+                } else if (animation_type === "pivot-select") {
+                    gridElements[barOneIdx].style.border = "white 1px solid";
                 }
                 this.setState({array: temp_array});
                 var progress = Math.floor(((i + 1) / animations.length) * 100);
@@ -257,10 +259,10 @@ class SortingVisualizer extends React.Component {
             animations = bubbleSort(this.state.array.slice());
         } else if (this.state.algorithm === sortingAlgorithms.QUICK_SORT_HOARE) {
             // eslint-disable-next-line
-            [_, animations] = quickSortHoare(this.state.array.slice(), 0, this.state.array.length-1);
+            var [_, animations] = quickSortHoare(this.state.array.slice(), 0, this.state.array.length-1);
         } else if (this.state.algorithm === sortingAlgorithms.QUICK_SORT_LOMUNTO) {
             // eslint-disable-next-line
-            [_, animations] = quickSortLomunto(this.state.array.slice(), 0, this.state.array.length-1);
+            var [_, animations] = quickSortLomunto(this.state.array.slice(), 0, this.state.array.length-1);
         } else if (this.state.algorithm === sortingAlgorithms.MERGE_SORT) {
             animations = mergeSort(this.state.array.slice(), 0, this.state.array.length-1);
         } else if (this.state.algorithm === sortingAlgorithms.SELECTION_SORT) {

@@ -15,9 +15,9 @@ function quicksortLomuto(array, left, right) {
     if (left < right) {
         [pivot, animationsPartition]  = partitionLomuto(array, left, right);
         // eslint-disable-next-line
-        [_, animationsLeft] = quicksortLomuto(array, left, pivot - 1);
+        var [_, animationsLeft] = quicksortLomuto(array, left, pivot - 1);
         // eslint-disable-next-line
-        [_, animationsRight] = quicksortLomuto(array, pivot + 1, right);
+        var [_, animationsRight] = quicksortLomuto(array, pivot + 1, right);
     }
 
     animationsQuickSort = [...animationsPartition, ...animationsRight, ...animationsLeft];

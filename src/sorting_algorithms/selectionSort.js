@@ -26,7 +26,7 @@ function selectionSort(array) {
         // Swap the found minimum element with the first element
         animations.push(["swap", min_idx, i]);
         swap(array,min_idx, i);
-        animations.push(["correct", i, i]);
+        animations.push(["uncheck", i, i]);
     }
     return animations;
 }
