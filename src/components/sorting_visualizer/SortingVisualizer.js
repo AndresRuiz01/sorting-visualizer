@@ -32,6 +32,7 @@ class SortingVisualizer extends React.Component {
             visualizationType: visualizationTypes.BAR_HEIGHT,
             windowHeight: window.innerHeight,
             loadingBarProgress: 0,
+            isSorting: false,
         }
 
         this.generateNewArray = this.generateNewArray.bind(this);
@@ -51,10 +52,18 @@ class SortingVisualizer extends React.Component {
     }
 
     handleResize(e) {
+        if (this.state.isSorting) {
+            return;
+        }
+
         this.setState({windowHeight: window.innerHeight});
         this.generateNewArray();
     }
     
+    updateStateAfterSorting(ms) {
+        setTimeout(() => {this.setState({isSorting: false})}, ms);
+    }
+
     /*
     Method used to update the state based on the sorting algorithm dropdown
     */
@@ -133,6 +142,10 @@ class SortingVisualizer extends React.Component {
     Method to generate a new array based on the visualization type
     */
     generateNewArray() {
+        if (this.state.isSorting) {
+            return;
+        }
+
         this.setState({loadingBarProgress: 0});
         if (this.state.visualizationType === visualizationTypes.BAR_HEIGHT) {
             this.generateHeightArray();
@@ -192,7 +205,7 @@ class SortingVisualizer extends React.Component {
                 var progress = Math.floor(((i) / animations.length) * 100) + 1;
                 this.setState({loadingBarProgress: progress});
 
-            }, i * 30);
+            }, i * SORTING_SPEED_IN_MS);
         }
     }
 
@@ -233,13 +246,20 @@ class SortingVisualizer extends React.Component {
     Method to visualize the sorting process of the selected algorithm using the selected visualization
     */
     sortElements() {
+        if (this.state.isSorting) {
+            return;
+        }
+
+        this.setState({isSorting: true});
+
         var animations = [];
-        var _;
         if (this.state.algorithm === sortingAlgorithms.BUBBLE_SORT) {
             animations = bubbleSort(this.state.array.slice());
         } else if (this.state.algorithm === sortingAlgorithms.QUICK_SORT_HOARE) {
+            // eslint-disable-next-line
             [_, animations] = quickSortHoare(this.state.array.slice(), 0, this.state.array.length-1);
         } else if (this.state.algorithm === sortingAlgorithms.QUICK_SORT_LOMUNTO) {
+            // eslint-disable-next-line
             [_, animations] = quickSortLomunto(this.state.array.slice(), 0, this.state.array.length-1);
         } else if (this.state.algorithm === sortingAlgorithms.MERGE_SORT) {
             animations = mergeSort(this.state.array.slice(), 0, this.state.array.length-1);
@@ -256,6 +276,7 @@ class SortingVisualizer extends React.Component {
         } else if (this.state.visualizationType === visualizationTypes.COLOR){
             this.colorVisualization(animations);
         }
+        this.updateStateAfterSorting(SORTING_SPEED_IN_MS * animations.length);
     }
 
     render () {

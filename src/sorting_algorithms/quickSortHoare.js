@@ -74,7 +74,6 @@ function partitionHoare(array, left, right) {
 
 function quickSortHoare(array, left, right) {
     var index;
-    var _;
     var animationsQuickSort = []
     var animationsLeft = [];
     var animationsRight = [];
@@ -82,9 +81,11 @@ function quickSortHoare(array, left, right) {
     if (array.length > 1) {
         [index, animationsPartition] = partitionHoare(array, left, right); //index returned from partition
         if (left < index - 1) { //more elements on the left side of the pivot
+            // eslint-disable-next-line
             [_, animationsLeft] = quickSortHoare(array, left, index - 1);
         }
         if (index < right) { //more elements on the right side of the pivot
+            // eslint-disable-next-line
             [_, animationsRight] = quickSortHoare(array, index, right);
         }
     }
